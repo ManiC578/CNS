@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char msg[100], key[100];
+    int i, k;
+
+    printf("Enter message: ");
+    scanf("%s", msg);
+
+    printf("Enter key: ");
+    scanf("%s", key);
+
+    // Encryption
+    for(i = 0; msg[i] != '\0'; i++)
+    {
+        k = key[i % strlen(key)] - 'A';
+
+        msg[i] = (msg[i] - 'A' + k) % 26 + 'A';
+    }
+
+    printf("Encrypted text: %s\n", msg);
+
+    // Decryption
+    for(i = 0; msg[i] != '\0'; i++)
+    {
+        k = key[i % strlen(key)] - 'A';
+
+        msg[i] = (msg[i] - 'A' - k + 26) % 26 + 'A';
+    }
+
+    printf("Decrypted text: %s\n", msg);
+
+    return 0;
+}
