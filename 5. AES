@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <openssl/aes.h>
+
+int main()
+{
+    AES_KEY ekey, dkey;
+
+    unsigned char key[16] = "1234567890123456";
+    unsigned char msg[16] = "HelloAES1234567";
+    unsigned char enc[16];
+    unsigned char dec[16];
+    int i;
+
+    printf("Original: %s\n", msg);
+
+    /* Encryption */
+    AES_set_encrypt_key(key, 128, &ekey);
+    AES_encrypt(msg, enc, &ekey);
+
+    printf("Encrypted: ");
+    for(i = 0; i < 16; i++) {
+        printf("%02X", enc[i]);
+    }
+
+    /* Decryption */
+    AES_set_decrypt_key(key, 128, &dkey);
+    AES_decrypt(enc, dec, &dkey);
+
+    dec[15] = '\0';
+
+    printf("\nDecrypted: %s\n", dec);
+
+    return 0;
+}
