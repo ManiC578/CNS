@@ -1,0 +1,38 @@
+#include <stdio.h>
+
+int main()
+{
+    char message[100], encrypted[100], decrypted[100];
+    int key, i;
+
+    printf("Enter message: ");
+    scanf("%s", message);
+
+    printf("Enter key: ");
+    scanf("%d", &key);
+
+    // Encryption
+    for(i = 0; message[i] != '\0'; i++)
+    {
+        if(message[i] >= 'A' && message[i] <= 'Z')
+            encrypted[i] = (message[i] - 'A' + key) % 26 + 'A';
+        else
+            encrypted[i] = message[i];
+    }
+    encrypted[i] = '\0';
+
+    // Decryption
+    for(i = 0; encrypted[i] != '\0'; i++)
+    {
+        if(encrypted[i] >= 'A' && encrypted[i] <= 'Z')
+            decrypted[i] = (encrypted[i] - 'A' - key + 26) % 26 + 'A';
+        else
+            decrypted[i] = encrypted[i];
+    }
+    decrypted[i] = '\0';
+
+    printf("\nEncrypted text: %s", encrypted);
+    printf("\nDecrypted text: %s", decrypted);
+
+    return 0;
+}
