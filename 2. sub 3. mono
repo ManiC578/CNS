@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main()
+{
+    char msg[100];
+    char alphabet[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    char key[] = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    int i, j;
+
+    printf("Enter message: ");
+    scanf("%s", msg);
+
+    // Encryption
+    for(i = 0; msg[i] != '\0'; i++)
+    {
+        for(j = 0; j < 26; j++)
+        {
+            if(msg[i] == alphabet[j])
+            {
+                msg[i] = key[j];
+                break;
+            }
+        }
+    }
+
+    printf("Encrypted text: %s\n", msg);
+
+    // Decryption
+    for(i = 0; msg[i] != '\0'; i++)
+    {
+        for(j = 0; j < 26; j++)
+        {
+            if(msg[i] == key[j])
+            {
+                msg[i] = alphabet[j];
+                break;
+            }
+        }
+    }
+
+    printf("Decrypted text: %s\n", msg);
+
+    return 0;
+}
