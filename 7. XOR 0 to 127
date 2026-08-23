@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main()
+{
+    char text[100];
+    int i;
+
+    printf("Enter text: ");
+    scanf("%s", text);
+
+    printf("\nXOR with 0: ");
+    for(i = 0; text[i] != '\0'; i++)
+    {
+        printf("%c", text[i] ^ 0);
+    }
+
+    printf("\nXOR with 127: ");
+    for(i = 0; text[i] != '\0'; i++)
+    {
+        printf("%c", text[i] ^ 127);
+    }
+
+    return 0;
+}
